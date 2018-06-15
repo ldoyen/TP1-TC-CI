@@ -64,3 +64,9 @@ submit_log <- function(){
   browseURL(paste0(pre_fill_link, encoded_log))
   print(encoded_log)
 }
+
+#answear test to known if the value of the answear is between b_inf and b_sup
+test_between <- function(b_inf,b_sup){
+  e <- get("e", parent.frame())
+  return((e$value >= b_inf)&(e$value <= b_sup))
+}

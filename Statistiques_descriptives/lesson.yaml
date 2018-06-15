@@ -214,7 +214,7 @@
 - Class: exact_question
   Output: En conséquence quelle est la valeur de la médiane du vecteur data_unif que vous venez de calculer avec R ?
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctVal = quantile(data_unif, probs=0.5)[[1]])
+  AnswerTests: test_between(floor(quantile(data_unif, probs=0.5)[[1]]*1000)/1000, ceiling(quantile(data_unif, probs=0.5)[[1]]*1000)/1000)
   Hint: Il vous suffit de reprendre le résultat du calcul précédent.
 
 - Class: exact_question
