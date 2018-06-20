@@ -27,7 +27,7 @@
 
 - Class: cmd_question
   Output: Maintenant nous allons utiliser la instruction sample() pour simuler le résultat de 20 lancés successifs de dé. 
-    Nous stoquerons le rsultat dans la variable data_de. Pour ce faire il faut taper l'instruction data_de <- sample(1:6, 20, replace=TRUE). A vous de jouer au dé !
+    Nous stoquerons le résultat dans la variable data_de. Pour ce faire il faut taper l'instruction data_de <- sample(1:6, 20, replace=TRUE). A vous de jouer au dé !
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_de <- sample(1:6, 20, replace=TRUE)')
   Hint: Tapez data_de <- sample(1:6, 20, replace=TRUE) puis appuyez sur la touche Entrée.
@@ -63,14 +63,14 @@
   Hint: Tapez data_de puis appuyez sur la touche Entrée.
 
 - Class: cmd_question
-  Output: Si vous avez compris, générez aléatoirement avec l'instruction sample, 100 lancés d'un dé à 7 faces et affectez le résultat à la variable data_de2.
+  Output: Si vous avez compris, à votre tour de générer aléatoirement avec l'instruction sample, 100 lancés d'un dé à 7 faces et affectez le résultat à la variable data_de2.
   CorrectAnswer: data_de2 <- sample(1:7, 100, replace=TRUE)
   AnswerTests: omnitest(correctExpr='data_de2 <- sample(1:7, 100, replace=TRUE)')
   Hint: Relisez l'explication précédente donnant le sens des trois arguments que nous avons utilisez dans la instruction sample. N'oubliez pas d'affecter le résultat à la variable data_de2.
 
 - Class: text
   Output: Avec un dé tout les entiers compris entre 1 et 6 ont tous autant de chances d'apparaitre. 
-    Il existe une autre loi dite uniforme sur [0,1] dont le principe est similaire, sauf que ce sont tous les nombres de l'intervalle [0,1] qui ont chacun autant de chances d'être choisis.
+    Il existe une autre loi dite uniforme sur [0,1] dont le principe est similaire, sauf que c'est alors tous les nombres de l'intervalle [0,1] qui ont chacun autant de chances d'être choisis.
 
 - Class: cmd_question
   Output: Pour simuler des nombres celon la loi uniforme sur [0,1] avec R, il faut utiliser l'instruction runif().
@@ -279,7 +279,7 @@
     l'instruction data_de2==2 permet de savoir quelles sont les tirages dont le résultat est 2.
     Tapez cette instruction. 
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctExpr='data_de2==2')
+  AnswerTests: any_of_exprs('data_de2==2', '2==data_de2')
   Hint: Tapez data_de2==2 puis appuyez sur la touche Entrée.
 
 - Class: text
@@ -292,7 +292,7 @@
   Output: Donc, avec l'instruction sum(data_de2==2), vous allez savoir combien il y a eu de résultat du lancé de dé égales à 2.
     Tapez donc cette instruction.
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctExpr='sum(data_de2==2)')
+  AnswerTests: any_of_exprs('sum(data_de2==2)', 'sum(2==data_de2)')
   Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
 
 - Class: text
@@ -300,10 +300,32 @@
 
 - Class: cmd_question
   Output: Maintenant pour calculer la fréquence d'apparition de la face 2 il suffit de diviser ce résultat par le nombre de jeté de dé.
-   Utilisez l'instruction sum() pour calculer la fréquence d'apparition de la face 2 parmis les résultats de data_de2. 
+    Utilisez l'instruction sum() pour calculer la fréquence d'apparition de la face 2 parmis les résultats de data_de2. 
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctVal=sum(data_de2==2)/length(data_de2))&expr_uses_func('sum')
   Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
+
+- Class: cmd_question
+  Output: En fait, avec l'instruction précédente vous venez de calculer une moyenne, à savoir
+    en moyenne combien de résultat du dé sont égaux à 2 par rapport à l'ensemble des lancés.
+    Vous pouvez donc plus simplement calculer exactement le même résultat en tapant simplement l'instruction
+    mean(data_de2==2). Tapez cette instruction.
+  CorrectAnswer: NULL
+  AnswerTests: any_of_exprs('mean(data_de2==2)', 'mean(2==data_de2)')
+  Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
+
+- Class: text
+  Output: Et vérifiez que le résultat est bien le même qu'en utilisant l'instruction sum().
+
+- Class: text
+  Output: De façon similaire on peut aussi par exemple calculer la fréquence des résultats compris entre 3  et 5 tout deux inclus avec l'instruction
+    mean(data_de2>=3 & data_de2<=5). 
+
+- Class: cmd_question
+  Output: Mainteant que vous avez compris le principe, utilisez l'instruction mean() pour calculer la fréquences des résultats strictement supérieurs à 2 et inférieures ou égales à 6. 
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal=men(data_de2>2 & data_de2<=6))&expr_uses_func('mean')
+  Hint: Relisez ce qu'on vous a expliqué dans l'exemple précédent et utilisez l'instruction mean() pour calculer la fréquences des résultats strictement supérieurs à 2 et inférieures ou égales à 6.
 
 - Class: mult_question
   Output: Souhaitez-vous valider cette deuxième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 1. Vous serez ainsi noté en conséquence ?
@@ -316,7 +338,7 @@
   Output: Nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au dessus (entre les deux guillemets après le symbol [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 2 du TP1.
 
 - Class: text
-  Output: Maintenant à vous de faire la dernière leçon de ce TP1.
+  Output: Maintenant à vous de faire la dernière leçon de ce TP1. Ne vous inquiétez pas, elle est vraiement très courte.
 
 
 
