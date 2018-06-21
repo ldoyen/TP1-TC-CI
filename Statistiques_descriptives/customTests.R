@@ -67,6 +67,12 @@ submit_log <- function(){
 
 #answear test to known if the value of the answear is between b_inf and b_sup
 test_between <- function(b_inf,b_sup){
+  n<-length(b_inf)
+  res<-TRUE
   e <- get("e", parent.frame())
-  return((e$value >= b_inf)&(e$value <= b_sup))
+  e<-e$value
+  for(i in 1:n){
+    res<-res&(e[i] >= b_inf[i])&(e[i] <= b_sup[i])
+  }
+  return(res)
 }

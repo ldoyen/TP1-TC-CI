@@ -26,7 +26,7 @@
   Output: Vous voyez que l'instruction 1:6 génére un vecteur contenant tout les entiers compris entre 1 et 6.
 
 - Class: cmd_question
-  Output: Maintenant nous allons utiliser la instruction sample() pour simuler le résultat de 20 lancés successifs de dé. 
+  Output: Maintenant nous allons utiliser l'instruction sample() pour simuler le résultat de 20 lancés successifs d'un dé. 
     Nous stoquerons le résultat dans la variable data_de. Pour ce faire il faut taper l'instruction data_de <- sample(1:6, 20, replace=TRUE). A vous de jouer au dé !
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_de <- sample(1:6, 20, replace=TRUE)')
@@ -44,7 +44,7 @@
 - Class: text
   Output: L'instruction sample() que nous avons utilisé avez 3 arguments séparés par des virgules.
     Le premier argument 1:6 spécifie que l'on va tirer des valeurs aléatoirement parmis le vecteur 1:6, c'est à dire parmi les entiers compris entre 1 et 6.
-    Le deuxième argument 20 spécifie qu'on va tirer 20 valeurs aléatoirement.
+    Le deuxième argument 20 spécifie qu'on va faire 20 fois l'expérience aléatoire.
     Enfin, le dernier argument dit qu'on peut tirer plusieurs fois la même valeur, c'est un tirage avec remise (en anglais replace).
 
 - Class: cmd_question
@@ -66,7 +66,7 @@
   Output: Si vous avez compris, à votre tour de générer aléatoirement avec l'instruction sample, 100 lancés d'un dé à 7 faces et affectez le résultat à la variable data_de2.
   CorrectAnswer: data_de2 <- sample(1:7, 100, replace=TRUE)
   AnswerTests: omnitest(correctExpr='data_de2 <- sample(1:7, 100, replace=TRUE)')
-  Hint: Relisez l'explication précédente donnant le sens des trois arguments que nous avons utilisez dans la instruction sample. N'oubliez pas d'affecter le résultat à la variable data_de2.
+  Hint: Relisez l'explication précédente donnant le sens des trois arguments que nous avons utilisé dans la instruction sample, ici on vous demande 100 lancés d'un dé à 7 faces. N'oubliez pas d'affecter le résultat à la variable data_de2.
 
 - Class: text
   Output: Avec un dé tout les entiers compris entre 1 et 6 ont tous autant de chances d'apparaitre. 
@@ -88,7 +88,7 @@
 - Class: text
   Output: Pour avoir accés au cinquième élément du vecteur data_unif, il faut taper data_unif[5].
     Vous pouvez remplacer le 5 par un vecteur qui indiquera alors les indices des éléments auxquels vous voulez avoir accés.
-    Par exemple, vous savez que l'instruction 1:6 génére un vecteur contenant les entiers de 1 à 6.
+    Par exemple, vous savez que l'instruction 1:6 génére un vecteur contenant tous les entiers de 1 à 6.
     Ainsi, data_unif[1:6] va afficher les 6 premiers éléments du vecteur data_unif. 
 
 - Class: cmd_question
@@ -101,24 +101,30 @@
     Pour le symbole ], c'est la même chose avec la touche parenthèse fermante.
 
 - Class: exact_question
-  Output: Quelle est la somme des cinq permiers éléments du vecteur data_unif que vous venez de faire afficher ?
+  Output: Quelle est la somme des cinq permiers éléments du vecteur data_unif que vous venez de faire afficher ? 
+    On pourra se contenter d'une approximation à 0.001 de chacun des 5 premiers éléments.
     Si ce petit calcul mental vous pose problème, n'oubliez pas que R est aussi une calculette.
-  AnswerTests: omnitest(correctVal = sum(data_unif[1:5]))
+  AnswerTests: test_between(sum(floor(data_unif[1:5]*1000)/1000),sum(ceiling(data_unif[1:5]*1000)/1000))
   Hint: Demandez à R de faire la somme des différents éléments que vous venez d'afficher.
 
 - Class: cmd_question
-  Output: En fait, il existe une instruction R très simple pour faire ce calcul. C'est l'instruction sum(). 
+  Output: En fait, il existe une instruction R très simple pour faire ce calcul. C'est l'instruction sum().
+    Par exemple l'instruction sum(y) va faire la somme des différents eléments du vecteur y.
     Utilisez cette instruction pour faire encore une fois la somme des 5 premiers éléments du vecteur data_unif.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='sum(data_unif[1:5])')
-  Hint: Tapez sum(data_unif[1:5]) puis appuyez sur la touche Entrée, afin de vérifiez que vous avez bien simulé 20 valeurs selon une loi uniforme.
+  Hint: Tapez sum(data_unif[1:5]) puis appuyez sur la touche Entrée, afin de vérifiez de calculer la somme des 5 premiers éléments de data_unif.
 
 - Class: text
-  Output: Vérifiez que les deux méthodes de calcul donnent bien le même résultat ?
+  Output: Vérifiez que les deux méthodes de calcul donnent bien approximativement le même résultat ?
+
+- Class: text
+  Output: La méthode utilisant l'instruction sum() est plus précise que de taper la valeur numérique des différents éléments data_unif.
+    En effet, elle prend en compte la valeur exacte, avec toutes les décimales, de chacun des élements.
 
 - Class: cmd_question
   Output: Pour connaître la dimension d'un vecteur, on peut utiliser l'instruction length(). 
-    Utilisez cette instruction pour vérifier que la dimension du dernier jeu de données simulées (data_unif) est bien 20.
+    Utilisez cette instruction pour vérifier que la dimension du dernier jeu de données simulées, data_unif, est bien 20.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='length(data_unif)')
   Hint: Tapez length(data_unif) puis appuyez sur la touche Entrée, afin de vérifiez que vous avez bien simulé 20 valeurs selon une loi uniforme.
@@ -127,7 +133,7 @@
   Output: Vous devez sans doute vous souvenir que la moyenne (de vos notes ou quoi que se soit d'autre) correspond à la somme des éléments divisée par le nombre d'éléments sommés.
     En conséquence, utilisez les instructions sum() et length() vu précédemment pour calculer la moyenne des valeurs du vecteur data_unif.
   CorrectAnswer: sum(data_unif)/length(data_unif)
-  AnswerTests: omnitest(correctVal = sum(data_unif)/length(data_unif))
+  AnswerTests: omnitest(correctVal = sum(data_unif)/length(data_unif))&expr_uses_func('sum')&expr_uses_func('length')
   Hint: Calculez la moyenne des éléments du vecteur data_unif en faisant la somme des éléments (à l'aide de l'instruction sum()) divisé par le nombre d'éléments (àl'aide de l'instruction length()).
 
 - Class: cmd_question
@@ -175,15 +181,14 @@
 - Class: cmd_question
   Output: Et affichez data_unif2 pour vérifier que les résultats sont maintenant bien triés par ordre croissant.
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctExpr='data_unif2 <- data_unif2')
+  AnswerTests: omnitest(correctExpr='data_unif2')
   Hint: Tapez data_unif2 puis appuyez sur la touche Entrée.
-
-
 
 - Class: text
   Output: L'année dernière, en statistiques descriptives, nous vous avons appris la notion de médiane et de quartile.
-    Rappelez-vous que la médiane correspond à une valeur du caractère qui coupe en deux la série statistique, il y a autant de valeurs plus petite que de valeurs plus grande que la médiane.
-    Les quartiles c'est la même chose mais on coupe en 4. Et pour couper en 4 il faut 3 quartiles.
+    Rappelez-vous que la médiane correspond à une valeur du caractère qui coupe en deux la série statistique. 
+    La moitié des valeurs de la série statistique doivent être plus petite que la médiane, et par conséquent l'autre moitié doivent être plus grande.
+    Pour les quartiles c'est la même chose mais on coupe en 4. Et pour couper en 4 il faut 3 quartiles.
     Tout cela se généralise avec la notion de quantile.
 
 - Class: text
@@ -204,50 +209,63 @@
     Le premier quartile est le quantile d'ordre 0.25.
     Au final, quel doit être l'ordre du troisième quartile ?
 
+- Class: exact_question
+  Output: Quelle est la dimension du vecteur data_unif ? 
+  CorrectAnswer: NULL
+  AnswerTests: omnitest(correctVal = length(data_unif))
+  Hint: Relisez les précédentes instructions de ce TP pour retrouver commment data_unif a été généré, ou utilisez l'instruction length() pour retrouver la dimension de data_unif.
+
+- Class: exact_question
+  Output: Utilisez une instruction vu précédemment pour faire afficher les valeurs de data_unif classez de la plus petite à la plus grande.
+  CorrectAnswer: sort(data_unif)
+  AnswerTests: omnitest(correctVal = sort(data_unif))
+  Hint: On vient de faire exactement la même chose juste avant dans cette leçon !
+
+- Class: exact_question
+  Output: La médiane de data_unif est telle que la moitié des valeurs de data_unif sont plus petites que la médiane, et la moitié des valeurs sont plus grandes.
+    En conséquence, au vue du résultat que vous avez affichez dans la question précédente entre lesquelles deux valeurs successives de data_unif doit se trouver la médiane.
+    Pour répondre vous devez créer un vecteur de 2 valeurs donnant cet intervalle à 0.001 prés.
+  CorrectAnswer: sort(data_unif)[c(50,51)]
+  AnswerTests: test_between(c(floor(sort(data_unif)[floor(length(data_unif)/2)]*1000)/1000, floor(sort(data_unif)[ceiling(length(data_unif)/2)]*1000)/1000), c(ceiling(sort(data_unif)[floor(length(data_unif)/2)]*1000)/1000, ceiling(sort(data_unif)[ceiling(length(data_unif)/2)]*1000)/1000))
+  Hint: A partir des valeurs de data_unif classez par ordre croissant, que vous avez affichez dans la question précdente,
+    trouvez les deux valeurs de data_unif entre lesquelles on doit donner le `coup de couteau` pour partager la série statistique en deux.
+    Ensuite tapez c( puis inscrivez la plus petite des deux valeurs à 0.001 près, puis tapez sur la touche virgule, puis inscrivez la plus grande des deux valeurs à 0.001 près, puis tapez sur touches parenthèse ffermante et Entrée.
+    Si vous n'arrivez vraiement pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip(), mais attention cela sera prise en compte dans la notation.
+
+- Class: text
+  Output: Ensuite on peut utiliser, comme on l'a fait l'année dernière, une interoplation linéaire pour trouver une valeur cohérente de la médiane dans cette intervalle.
+
 - Class: cmd_question
-  Output: Ainsi, pour trouver le troisième quartile des résultats contenus dans le jeux de données data_unif il faut taper l'instruction quantile(data_unif, probs=0.75).
+  Output: En R il existe une instruction très simple pour directement trouver la valeur d'un quantile. 
+    Par exemple, pour trouver le troisième quartile des résultats contenus dans le jeux de données data_unif il faut taper l'instruction quantile(data_unif, probs=0.75).
     Utilisez le même type d'instruction pour trouver la médiane du jeux de données data_unif.
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctExpr='quantile(data_unif, probs=0.5)')
+  AnswerTests: omnitest(correctVal=quantile(data_unif, probs=0.5))&expr_uses_func('quantile')
   Hint: Tapez quantile(data_unif, probs=0.5) puis appuyez sur la touche Entrée.
 
 - Class: exact_question
-  Output: En conséquence quelle est la valeur de la médiane du vecteur data_unif que vous venez de calculer avec R ?
+  Output: En conséquence quelle est la valeur de la médiane du vecteur data_unif que vous venez de calculer avec R ? Donnez trois chiffre significatif au moins.
   CorrectAnswer: NULL
   AnswerTests: test_between(floor(quantile(data_unif, probs=0.5)[[1]]*1000)/1000, ceiling(quantile(data_unif, probs=0.5)[[1]]*1000)/1000)
-  Hint: Il vous suffit de reprendre le résultat du calcul précédent.
-
-- Class: exact_question
-  Output: Quelle est la dimension de ce même vecteur data_unif ? 
-  CorrectAnswer: NULL
-  AnswerTests: omnitest(correctVal = length(data_unif))
-  Hint: Regarder un peu plus dans le TP ou utiliser l'instruction length() pour retrouver la dimension de data_unif.
-
-- Class: exact_question
-  Output: La médiane est telle que la moitié des valeurs de data_unif (soit 100/2=50) sont plus petites que la médiane, et la moitié des valeurs (soit 100/2=50) sont plus grandes.
-    Ainsi, si vous classer par ordre croissant les valeurs de data_unif la médiane doit se trouver entre la 50ème et 51ème position.
-    Afin de le vérifiez costruisez un vecteur de valeur donnant l'intervalle dans lequel doit se trouver la médiane.
-  CorrectAnswer: sort(data_unif)[c(50,51)]
-  AnswerTests: omnitest(correctVal = c(sort(data_unif)[50],sort(data_unif)[51]))
-  Hint: Pour construire un vecteur il faut utiliser l'instruction c() et séparer les deux valeurs du vecteur par des virgules. 
-    Pour classer par ordre croissant les valeurs il faut utiliser l'instruction sort(). 
-    Pour récupérer une ou plusieurs valeurs d'un vecteur, il faut ecrire le nom du vecteur puis mettre entre crochets les indices des valeurs que l'on veut récupérer.
-    La façon de faire des crochets sous mac a été décrite plus haut.
-    Si vous n'arivez vraiement pas à faire cette question, vous pouvez la sotter avec l'instruction skip(), mais attention cela sera prise en compte dans la notation.
+  Hint: Il vous suffit de reprendre le résultat du calcul précédent, on vous demande simplement trois chiffres significatifs.
 
 - Class: text
-  Output: Comme vous pouvez le remarquer, la valeur de la médiane proposée par R est est bien dans l'intervalle où on s'attend à la trouver !
+  Output: Comme vous pouvez le remarquer, la valeur de la médiane proposée par R est bien dans l'intervalle où on s'attendait à la trouver !
 
 - Class: cmd_question
   Output: Maintenant vous allez demander à R de tracer l'histogramme correspondant du jeux de données data_unif.
-    Pour ce faire il vous faut tapez l'instruction suivante plot(data_unif, freq=FALSE).
+    Pour ce faire il vous faut tapez l'instruction suivante hist(data_unif, freq=FALSE). A vous de jouer !
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctExpr='plot(data_unif, freq=FALSE)')
-  Hint: Tapez plot(data_unif, freq=FALSE) puis appuyez sur la touche Entrée.
+  AnswerTests: omnitest(correctExpr='hist(data_unif, freq=FALSE)')
+  Hint: Tapez hist(data_unif, freq=FALSE) puis appuyez sur la touche Entrée.
 
 - Class: text
   Output: On s'attend à obtenir un histogramme relativement "plat" puisque théoriquement toutes les valeurs de l'intervalle [0,1] ont chacune autant de chance d'être tirées au hasard.
     En pratique qu'en pensez-vous ?
+
+- Class: text
+  Output: Oui, mais d'un autre côté on a simulé que 20 valeurs, ce n'est peut être pas suffisant...
+
 
 - Class: text
   Output: Pour finir nous allons vous apprendre à calculer une fréquence ou proportion en utilisant R.
@@ -272,7 +290,7 @@
   Hint: Servez-vous de la réponse à la question précédente, en plus vous devez bien vous souvenir que la fréquence d'apparition de la face 2 correspond au nombre de fois où la face 2 est apparue divisé par le nombre total de lancés de dé.
 
 - Class: text
-  Output: Il existe une autre métode pour calculer une fréquence avec R. Cette méthode à l'avantage de se généralisrer facilement à d'autres situations, comme nous allons le voir par la suite.
+  Output: Il existe une autre métode pour calculer une fréquence avec R. Cette méthode à l'avantage de se généraliser facilement à d'autres situations, comme nous allons le voir par la suite.
 
 - Class: cmd_question
   Output: Tout d'abord, comme nous l'avons vu dans la leçon précédente, 
@@ -300,10 +318,10 @@
 
 - Class: cmd_question
   Output: Maintenant pour calculer la fréquence d'apparition de la face 2 il suffit de diviser ce résultat par le nombre de jeté de dé.
-    Utilisez l'instruction sum() pour calculer la fréquence d'apparition de la face 2 parmis les résultats de data_de2. 
+    Vous devez utiliser l'instruction sum() comme on vient de le voire pour calculer la fréquence d'apparition de la face 2 parmis les résultats de data_de2. 
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctVal=sum(data_de2==2)/length(data_de2))&expr_uses_func('sum')
-  Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
+  Hint: Tapez sum(data_de2==2)/length(data_de2) puis appuyez sur la touche Entrée.
 
 - Class: cmd_question
   Output: En fait, avec l'instruction précédente vous venez de calculer une moyenne, à savoir
@@ -318,13 +336,13 @@
   Output: Et vérifiez que le résultat est bien le même qu'en utilisant l'instruction sum().
 
 - Class: text
-  Output: De façon similaire on peut aussi par exemple calculer la fréquence des résultats compris entre 3  et 5 tout deux inclus avec l'instruction
+  Output: De façon similaire on peut aussi par exemple calculer la fréquence des résultats compris entre 3  et 5, tous deux inclus, avec l'instruction
     mean(data_de2>=3 & data_de2<=5). 
 
 - Class: cmd_question
   Output: Mainteant que vous avez compris le principe, utilisez l'instruction mean() pour calculer la fréquences des résultats strictement supérieurs à 2 et inférieures ou égales à 6. 
   CorrectAnswer: NULL
-  AnswerTests: omnitest(correctVal=men(data_de2>2 & data_de2<=6))&expr_uses_func('mean')
+  AnswerTests: omnitest(correctVal=mean(data_de2>2 & data_de2<=6))&expr_uses_func('mean')
   Hint: Relisez ce qu'on vous a expliqué dans l'exemple précédent et utilisez l'instruction mean() pour calculer la fréquences des résultats strictement supérieurs à 2 et inférieures ou égales à 6.
 
 - Class: mult_question
