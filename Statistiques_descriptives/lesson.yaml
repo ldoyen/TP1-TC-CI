@@ -348,7 +348,7 @@
   Hint: Relisez ce qu'on vous a expliqué dans l'exemple précédent et utilisez l'instruction mean() pour calculer la fréquences des résultats strictement supérieurs à 2 et inférieures ou égales à 6.
 
 - Class: mult_question
-  Output: Souhaitez-vous valider cette deuxième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 1. Vous serez ainsi noté en conséquence ?
+  Output: Souhaitez-vous valider cette deuxième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 2 du TP 1. Vous serez ainsi noté en conséquence ?
   AnswerChoices: Oui;Non
   CorrectAnswer: NULL
   AnswerTests: submit_log()
