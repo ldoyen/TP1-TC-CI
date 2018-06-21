@@ -36,7 +36,7 @@
   Output: Affichez le résultat des 20 lancés de dé.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_de')
-  Hint: Tapez data_de puis appuyez sur la touche Entrée.
+  Hint: Rappelez-vous que pour afficher la valeur d'une variable il suffit de taper son nom puis d'appuyer sur la touche Entrée.
 
 - Class: text
   Output: On a bien 20 valeurs comprises entre 1 et 6. Il semblerait donc bien que R sache lancer des dés.
@@ -60,13 +60,14 @@
   Output: Affichez les valeurs de data_de afin de vérifier que les résultats des 20 lancés de dé sont bien différents de la première expérience.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_de')
-  Hint: Tapez data_de puis appuyez sur la touche Entrée.
+  Hint: Rappelez-vous que pour afficher la valeur d'une variable il suffit de taper son nom puis d'appuyer sur la touche Entrée.
 
 - Class: cmd_question
   Output: Si vous avez compris, à votre tour de générer aléatoirement avec l'instruction sample, 100 lancés d'un dé à 7 faces et affectez le résultat à la variable data_de2.
   CorrectAnswer: data_de2 <- sample(1:7, 100, replace=TRUE)
   AnswerTests: omnitest(correctExpr='data_de2 <- sample(1:7, 100, replace=TRUE)')
   Hint: Relisez l'explication précédente donnant le sens des trois arguments que nous avons utilisé dans l'instruction sample(), ici on vous demande 100 lancés d'un dé à 7 faces. N'oubliez pas d'affecter le résultat à la variable data_de2.
+    Si vous n'arrivez vraiment pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip(), mais attention cela sera prise en compte dans la notation.
 
 - Class: text
   Output: Avec un dé tous les entiers compris entre 1 et 6 ont tous autant de chances d'apparaitre. 
@@ -83,7 +84,7 @@
   Output: Affichez les valeur de data_unif afin de vérifier que vous venez bien de simuler 20 nombres compris entre 0 et 1.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_unif')
-  Hint: Tapez data_unif puis appuyez sur la touche Entrée.
+  Hint: Rappelez-vous que pour afficher la valeur d'une variable il suffit de taper son nom puis d'appuyer sur la touche Entrée.
 
 - Class: text
   Output: Pour avoir accès au cinquième élément du vecteur data_unif, il faut taper data_unif[5].
@@ -182,7 +183,7 @@
   Output: Et affichez data_unif2 pour vérifier que les résultats sont maintenant bien triés par ordre croissant.
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctExpr='data_unif2')
-  Hint: Tapez data_unif2 puis appuyez sur la touche Entrée.
+  Hint: Rappelez-vous que pour afficher la valeur d'une variable il suffit de taper son nom puis d'appuyer sur la touche Entrée.
 
 - Class: text
   Output: L'année dernière, en statistiques descriptives, nous vous avons appris la notion de médiane et de quartile.
@@ -208,6 +209,7 @@
     La médiane est aussi le quantile d'ordre 0.5.
     Le premier quartile est le quantile d'ordre 0.25.
     Au final, quel doit être l'ordre du troisième quartile ?
+    Si vous n'arrivez vraiment pas à faire cette question, vous pouvez la sauter en tapant l'instruction skip(), mais attention cela sera prise en compte dans la notation.
 
 - Class: exact_question
   Output: Quelle est la dimension du vecteur data_unif ? 
@@ -321,7 +323,7 @@
     Vous devez utiliser l'instruction sum() comme on vient de le voir pour calculer la fréquence d'apparition de la face 2 parmi les résultats de data_de2. 
   CorrectAnswer: NULL
   AnswerTests: omnitest(correctVal=sum(data_de2==2)/length(data_de2))&expr_uses_func('sum')
-  Hint: Tapez sum(data_de2==2)/length(data_de2) puis appuyez sur la touche Entrée.
+  Hint: Il vous faut taper sum(data_de2==2) et le diviser par la dimension du vecteur data_de2 pour calculer la fréquence d'apparition de la face 2.
 
 - Class: cmd_question
   Output: En fait, avec l'instruction précédente vous venez de calculer une moyenne, à savoir
@@ -330,7 +332,7 @@
     mean(data_de2==2). Tapez cette instruction.
   CorrectAnswer: NULL
   AnswerTests: any_of_exprs('mean(data_de2==2)', 'mean(2==data_de2)')
-  Hint: Tapez sum(data_de2==2) puis appuyez sur la touche Entrée.
+  Hint: Tapez mean(data_de2==2) puis appuyez sur la touche Entrée.
 
 - Class: text
   Output: Et vérifiez que le résultat est bien le même qu'en utilisant l'instruction sum().
