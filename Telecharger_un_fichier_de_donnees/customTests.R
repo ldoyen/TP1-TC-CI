@@ -24,7 +24,24 @@ getLog <- function(){
 }
 
 submit_log <- function(){
+  selection <- getState()$val
+  trans<-TRUE
+  if(selection == "Non"){
+    demande_confirmation<-"Attention si vous ne validez pas votre le\xE7on maintenant,"
+    Encoding(demande_confirmation) <- "latin1"
+    message(demande_confirmation)
+    demande_confirmation<-"il vous faudra la refaire pour pouvoir la valider."
+    Encoding(demande_confirmation) <- "latin1"
+    message(demande_confirmation)
+    demande_confirmation<-"Etes-vous certain de ne pas vouloir valider votre TP ?"
+    Encoding(demande_confirmation) <- "latin1"
+    message(demande_confirmation)
+    demande_confirmation<-"Pour ne pas valider r\xE9pondez TRUE ?"
+    Encoding(demande_confirmation) <- "latin1"
+    trans <- !(readline(demande_confirmation) == TRUE)
+  }
   
+  if (trans){
   groupe_etud <- readline("Quelle est votre groupe ? ")
   demande_num<-"Quelle est votre num\xE9ro d'\xE9tudiant ? "
   Encoding(demande_num) <- "latin1"
@@ -63,6 +80,8 @@ submit_log <- function(){
   encoded_log <- base64encode(temp)
   browseURL(paste0(pre_fill_link, encoded_log))
   print(encoded_log)
+  }
+  return(TRUE)
 }
 
 #answear test to known if the value of the answear is between b_inf and b_sup
@@ -75,4 +94,12 @@ test_between <- function(b_inf,b_sup){
     res<-res&(e[i] >= b_inf[i])&(e[i] <= b_sup[i])
   }
   return(res)
+}
+
+mon_test<-function(){
+  selection <- getState()$val
+  if(selection == "Oui"){
+    browseURL("https://catalog.data.gov/dataset/u-s-annual-seasonal-climate-normals-1981-2010")
+  }
+  return(TRUE)
 }

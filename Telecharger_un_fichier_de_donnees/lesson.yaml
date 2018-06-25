@@ -6,27 +6,30 @@
   Organization: IUT2 Grenoble - TC
   Version: 1
 
-- Class: video
-  Output: Vous devez maintenant ouvrir l'adresse suivante dans votre navigateur : "https://catalog.data.gov/dataset/u-s-annual-seasonal-climate-normals-1981-2010". 
-    Souhaitez-vous que R ouvre directement votre navigateur sur la page en question ? Si vous répondez non, se sera à vous de le faire manuellement pour pouvoir continuer cette leçon.
-  VideoLink: https://catalog.data.gov/dataset/u-s-annual-seasonal-climate-normals-1981-2010
+- Class: mult_question
+  Output: "Vous devez maintenant ouvrir l'adresse suivante dans votre navigateur : https://catalog.data.gov/dataset/u-s-annual-seasonal-climate-normals-1981-2010. Souhaitez-vous que R ouvre directement votre navigateur sur la page en question ? Si vous répondez non, ce sera à vous de le faire manuellement pour pouvoir continuer cette leçon."
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: mon_test()
+  Hint: hint
 
 - Class: text
-  Output: La page web que vous venez d'ouvrir dans la question précédente donne accès à des données climatologique provenant du gouvernement américain.
+  Output: La page web que vous venez d'ouvrir dans la question précédente donne accès à un jeu de données climatologiques provenant du gouvernement américain.
     En descendant dans la page, vous pouvez voir que le jeu de données en question est disponible sous différents format.
     Dans cette leçon nous allons utiliser le format csv. Cherchez le format en question dans la page. Pour ce format, ne cliquez pas sur download, ni sur open, mais cliquez sur l'entête de desciption du fichier csv afin d'ouvrir la page web correspondant à ce fichier ('Annual/Seasonal Climate Normals CSV Sample').
 
 - Class: text
   Output: Dans cette page vous allez trouver une URL qui permet de télécharger le fichier de données au format csv. Copiez là.
-    Pour ce faire il suffit de sélectionner l'URL en question puis tapez sur les touches control et C.
+    Pour ce faire il suffit de sélectionner l'URL en question puis de maintenir appuyé la touche control tout en appuyant sur la touche c.
 
 - Class: cmd_question
   Output: Maintenant vous allez importer le fichier de données csv en question dans R à l'aide de l'instruction read.csv(). 
     Cette instruction va devoir avoir en argument (dans la parenthèse) l'adresse que vous venez de copiez, mais attention vous devez mettre cette adresse entre deux guillemets ou entre deux quote.
-    Enfin, dans la même instruction vous devez affecter le résultat de l'instruction read.csv() à la variable que vous nomerrez data. Ainsi les données météorologiques seront ensuite dans data.
+    Pour coller l'adresse à l'endroit ou figure votre curseur il vous suffit de maintenir appuyé la touche control tout en appuyant sur la touche v.
+    Enfin, dans la même instruction vous devez affecter le résultat de l'instruction read.csv() à la variable que vous nomerrez data.
   CorrectAnswer: NULL
-  AnswerTests: any_of_exprs('data<-read.csv("https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv")','data<-read.csv('https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv')')
-  Hint: Tapez l'instruction data<-read.csv("https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv"), puis appuyer sur la touche Entrée.
+  AnswerTests: omnitest(correctExpr='data<-read.csv("https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv")',"data<-read.csv('https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv')")
+  Hint: Tapez l'instruction data<-read.csv('https://www1.ncdc.noaa.gov/pub/data/cdo/samples/NORMAL_ANN_sample_csv.csv'), puis appuyer sur la touche Entrée.
 
 - Class: cmd_question
   Output: Maintenant vous pouvez visualiser les premières lignes du jeu de données data à l'aide de l'instruction head(data).
@@ -50,7 +53,7 @@
   Hint: hint
 
 - Class: text
-  Output: Nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 3 du TP1.
+  Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 3 du TP1. Elle peut vous être demandée.
 
 - Class: text
   Output: Bravo, vous avez maintenant fini votre TP1 !
