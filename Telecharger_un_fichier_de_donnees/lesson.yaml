@@ -45,12 +45,11 @@
   AnswerTests: omnitest(correctExpr='tail(data)')
   Hint: Tapez l'instruction tail(data), puis appuyer sur la touche Entrée.
 
-- Class: mult_question
-  Output: Souhaitez-vous valider cette troisième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 3 du TP 1. Vous serez ainsi noté en conséquence ?
-  AnswerChoices: Oui;Non
+- Class: exact_question
+  Output: Vous allez maintenant valider cette troisième leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 3 du TP 1. Quelle est votre groupe ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
-  Hint: hint
+  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
 
 - Class: text
   Output: Si vous avez validé cette leçon, nous vous conseillons également de copier l'intégralité de la clé qui vient de s'imprimer juste au-dessus (entre les deux guillemets après le symbole [1]) et de sauvegarder l'intégralité de cette clé dans votre ordinateur (dans un fichier ou un email). Outre le Google Forms que vous venez de valider, cette clé est la preuve du fait que vous avez bien fait votre leçon 3 du TP1. Elle peut vous être demandée.

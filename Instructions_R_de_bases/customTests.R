@@ -24,25 +24,11 @@ getLog <- function(){
 }
 
 submit_log <- function(){
+  res<-FALSE
   selection <- getState()$val
-  trans<-TRUE
-  if(selection == "Non"){
-    demande_confirmation<-"Attention si vous ne validez pas votre le\xE7on maintenant,"
-    Encoding(demande_confirmation) <- "latin1"
-    message(demande_confirmation)
-    demande_confirmation<-"il vous faudra la refaire pour pouvoir la valider."
-    Encoding(demande_confirmation) <- "latin1"
-    message(demande_confirmation)
-    demande_confirmation<-"Etes-vous certain de ne pas vouloir valider votre TP ?"
-    Encoding(demande_confirmation) <- "latin1"
-    message(demande_confirmation)
-    demande_confirmation<-"Pour ne pas valider r\xE9pondez TRUE ?"
-    Encoding(demande_confirmation) <- "latin1"
-    trans <- !(readline(demande_confirmation) == TRUE)
-  }
-  
-  if (trans){
-  groupe_etud <- readline("Quelle est votre groupe ? ")
+if(selection %in% 1:5){
+  res<-TRUE
+
   demande_num<-"Quelle est votre num\xE9ro d'\xE9tudiant ? "
   Encoding(demande_num) <- "latin1"
   num_etud <- readline(demande_num)
@@ -52,8 +38,20 @@ submit_log <- function(){
   prenom_etud <- readline(demande_prenom)
 
   # Please edit the link below
-  pre_fill_link <- "https://docs.google.com/forms/d/e/1FAIpQLSedErETojgRotoYLiI8ynXy6pcg7n_zMHOm40IJuBP5Ucm7Aw/viewform?usp=pp_url&entry.396843662="
-  
+  pre_fill_link1 <- "https://docs.google.com/forms/d/e/1FAIpQLSedErETojgRotoYLiI8ynXy6pcg7n_zMHOm40IJuBP5Ucm7Aw/viewform?usp=pp_url&entry.396843662="
+  pre_fill_link2 <- "https://docs.google.com/forms/d/e/1FAIpQLSd1F_R0PF2TlNGt2fWokYQXXHI04VUmGuXAt28Zg3dLtrkZvw/viewform?usp=pp_url&entry.1337846868="
+  pre_fill_link3 <- "https://docs.google.com/forms/d/e/1FAIpQLScu_WmWluTBJQm7sJXyVVkb0WM0W2RyhAUE6ZQYA77HgilMzw/viewform?usp=pp_url&entry.419018389="
+  pre_fill_link4 <- "https://docs.google.com/forms/d/e/1FAIpQLScii7wiYhvVPqXJUwtoLmEuKitUDWBpk1tzJwNI050nq1XD5g/viewform?usp=pp_url&entry.1843359488="
+  pre_fill_link5 <- "https://docs.google.com/forms/d/e/1FAIpQLSeALcMgvPVUbOglitGCfmLWEc5NaKk3Cp1dVhJvE2fZtedNcA/viewform?usp=pp_url&entry.1206664424="
+
+  pre_fill_link <- switch(selection,
+    pre_fill_link1,
+    pre_fill_link2,
+    pre_fill_link3,
+    pre_fill_link4,
+    pre_fill_link5
+  )
+
   # Do not edit the code below
   if(!grepl("=$", pre_fill_link)){
     pre_fill_link <- paste0(pre_fill_link, "=")
@@ -64,22 +62,17 @@ submit_log <- function(){
   temp <- tempfile()
   log_ <- getLog()
   nrow_ <- max(unlist(lapply(log_, length)))
-  log_tbl <- data.frame(groupe = groupe_etud,
-                        num = num_etud,
-                        nom = nom_etud,
-                        prenom = prenom_etud,
-                        course_name = rep(log_$course_name, nrow_),
-                        lesson_name = rep(log_$lesson_name, nrow_),
-                        question_number = p(log_$question_number, nrow_, NA),
-                        correct = p(log_$correct, nrow_, NA),
-                        attempt = p(log_$attempt, nrow_, NA),
-                        skipped = p(log_$skipped, nrow_, NA),
-                        datetime = p(log_$datetime, nrow_, NA),
+  log_tbl <- data.frame( p(log_$question_number, nrow_, NA),
+                         p(log_$correct, nrow_, NA),
+                         p(log_$attempt, nrow_, NA),
+                         p(log_$skipped, nrow_, NA),
+                         p(log_$datetime, nrow_, NA),
                         stringsAsFactors = FALSE)
+  names(log_tbl) <- c(num_etud, nom_etud, prenom_etud,log_$lesson_name,"t")
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   browseURL(paste0(pre_fill_link, encoded_log))
   print(encoded_log)
-  }
-  return(TRUE)
+}
+  return(res)
 }
