@@ -1,11 +1,11 @@
 # Put custom tests in this file.
-      
+
 # Uncommenting the following line of code will disable
 # auto-detection of new variables and thus prevent swirl from
 # executing every command twice, which can slow things down.
-      
+
 # AUTO_DETECT_NEWVAR <- FALSE
-      
+
 # However, this means that you should detect user-created
 # variables when appropriate. The answer test, creates_new_var()
 # can be used for for the purpose, but it also re-evaluates the
@@ -29,11 +29,11 @@ submit_log <- function(){
 if(selection %in% 1:5){
   res<-TRUE
 
-  demande_num<-"Quelle est votre num\xE9ro d'\xE9tudiant ? "
+  demande_num<-"Quel est votre num\xE9ro d'\xE9tudiant ? "
   Encoding(demande_num) <- "latin1"
   num_etud <- readline(demande_num)
-  nom_etud <- readline("Quelle est votre nom de famille ? ")
-  demande_prenom<-"Quelle est votre pr\xE9nom ? "
+  nom_etud <- readline("Quel est votre nom de famille ? ")
+  demande_prenom<-"Quel est votre pr\xE9nom ? "
   Encoding(demande_prenom) <- "latin1"
   prenom_etud <- readline(demande_prenom)
 
@@ -56,9 +56,9 @@ if(selection %in% 1:5){
   if(!grepl("=$", pre_fill_link)){
     pre_fill_link <- paste0(pre_fill_link, "=")
   }
-  
+
   p <- function(x, p, f, l = length(x)){if(l < p){x <- c(x, rep(f, p - l))};x}
-  
+
   temp <- tempfile()
   log_ <- getLog()
   nrow_ <- max(unlist(lapply(log_, length)))
