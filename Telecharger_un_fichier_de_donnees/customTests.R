@@ -72,10 +72,22 @@ if(selection %in% 1:5){
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   browseURL(paste0(pre_fill_link, encoded_log))
-  message("DEBUT CLE:")
-  message(encoded_log)
-  message("FIN CLE.")
+
+  e <- get("e", parent.frame())
+  if(selection %in% c(1,2,3)) e$adresse_email<-"laurent.doyen@iut2.univ-grenoble-alpes.fr" else e$adresse_email<-"marie-jose.martinez@iut2.univ-grenoble-alpes.fr"
+  e$sujet_email<-paste0("**TP1-TC-CI**"," G",selection,", ",log_$lesson_name,", ", nom_etud,collapse="")
+  e$corp_email<-encoded_log
 }
+  return(res)
+}
+
+email_log<-function(){
+  e <- get("e", parent.frame())
+  res<-FALSE
+  if(e$val=="Oui"){
+    email(e$adresse_email,e$sujet_email,e$corp_email)
+    res<-TRUE
+  }
   return(res)
 }
 
