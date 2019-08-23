@@ -16,7 +16,14 @@
   Output: La force de R, qui fait qu'il est même utilisé par les chercheurs en Statistique, vient du fait que ses fonctionnalités peuvent être augmentées grâce au chargement de packages. Ce TP utilise le package swirl que vous avez d'abord installé puis ensuite chargé avec la commande library(swirl). A chaque fois que vous ré-ouvrez R-Studio, vous devez à nouveau charger les packages dont vous avez besoin. Par contre, il n'est pas nécessaire de les installer à nouveau.
 
 - Class: text
-  Output: swirl est un package R qui permet d'apprendre le R à partir de R. Si un jour vous souhaitez en apprendre plus sur R, pensez à utiliser swirl et les cours génériques qu'il propose. Le cours qui suit a été écrit par vos enseignants de mathématiques de TC et s'intéresse uniquement aux notions dont vous aurez besoin cette année. Commençons !
+  Output: swirl est un package R qui permet d'apprendre le R à partir de R. Si un jour vous souhaitez en apprendre plus sur R, pensez à utiliser swirl et les cours génériques qu'il propose. Le cours qui suit a été écrit par vos enseignants de mathématiques de TC et s'intéresse uniquement aux notions dont vous aurez besoin cette année.
+
+- Class: mult_question
+  Output: Etes-vous pret pour commencer ?
+  CorrectAnswer: NULL
+  AnswerChoices: Oui; Oui, il va bien falloir le faire !
+  AnswerTests: cmoninit()
+  Hint: ...
 
 - Class: cmd_question
   Output: Dans sa version la plus simple, R peut être utilisé comme une simple calculette. Tapez
