@@ -315,13 +315,13 @@
 
 - Class: exact_question
   Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 1. 
-    Quel est votre groupe (pour les DUT 2A CI tapez votre numéro de groupe entre 1 et 5; pour les DUT 2A alternance tapez Alt2; pour les BUT 1A CI tapez votre lettre de groupe A ou B en majuscule; pour les BUT 1A alternance tapez Alt1) ?
+    Quel est votre groupe (pour les DUT 2A CI tapez votre numéro de groupe entre 1 et 5; pour les DUT 2A alternance tapez "Alt2" avec les guillemets; pour les BUT 1A CI tapez celon votre groupe "A" ou "B" avec les guillemets; pour les BUT 1A alternance tapez "Alt1" avec les guillemets) ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
   Hint: Si vous êtes en DUT 2A en cycle initial tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
-    Si vous êtes en DUT 2A alternance tapez Alt2 et appuyez sur la touche Entrée.
-    Si vous êtes en BUT 1A en cycle initial tapez votre numéro de groupe A ou B (en majuscule) et appuyez sur la touche Entrée.
-    Si vous êtes en BUT 1A alternance tapez Alt1 et appuyez sur la touche Entrée.
+    Si vous êtes en DUT 2A alternance tapez "Alt2" (avec les guillemets) et appuyez sur la touche Entrée.
+    Si vous êtes en BUT 1A en cycle initial tapez "A" ou "B" (avec les guillemets) celon votre groupe et appuyez sur la touche Entrée.
+    Si vous êtes en BUT 1A alternance tapez "Alt1" (avec les guillemets) et appuyez sur la touche Entrée.
 
 
 - Class: mult_question
@@ -357,7 +357,7 @@
 - Class: mult_question
   Output: Cherchez le fichier contenant votre clé. Est-il dans un espace personnel ?
     Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, vous devez envoyer par email ce fichier
-    à votre enseignant de TD (laurent.doyen@iut2.univ-grenoble-alpes.fr ou marie-jose.martinez@iut2.univ-grenoble-alpes.fr).
+    à votre enseignant de TD (laurent.doyen@univ-grenoble-alpes.fr ou marie-jose.marcoux@univ-grenoble-alpes.fr).
     Avez-vous fait les étapes décrite ci dessus ?
   AnswerChoices: Oui;Non, je ne trouve pas ce fichier
   CorrectAnswer: NULL
