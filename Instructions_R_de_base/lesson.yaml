@@ -314,10 +314,15 @@
 
 
 - Class: exact_question
-  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 1. Quel est votre groupe ?
+  Output: Vous allez maintenant valider cette première leçon sur Google Forms afin que votre enseignant sache que vous avez réalisé votre leçon 1 du TP 1. 
+    Quel est votre groupe (pour les DUT 2A CI tapez votre numéro de groupe entre 1 et 5; pour les DUT 2A alternance tapez Alt2; pour les BUT 1A CI tapez votre lettre de groupe A ou B en majuscule; pour les BUT 1A alternance tapez Alt1) ?
   CorrectAnswer: NULL
   AnswerTests: submit_log()
-  Hint: Tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+  Hint: Si vous êtes en DUT 2A en cycle initial tapez votre numéro de groupe entre 1 et 5 et appuyez sur la touche Entrée.
+    Si vous êtes en DUT 2A alternance tapez Alt2 et appuyez sur la touche Entrée.
+    Si vous êtes en BUT 1A en cycle initial tapez votre numéro de groupe A ou B (en majuscule) et appuyez sur la touche Entrée.
+    Si vous êtes en BUT 1A alternance tapez Alt1 et appuyez sur la touche Entrée.
+
 
 - Class: mult_question
   Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
